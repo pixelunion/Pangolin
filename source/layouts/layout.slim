@@ -1,0 +1,104 @@
+doctype 5
+/[if lt IE 9]
+  html.no-js.lt-ie10.lt-ie9
+/[if IE 9]
+  html.no-js.lt-ie10
+/[if gt IE 9]
+  html.no-js
+
+== theme_masthead
+
+head
+
+  meta charset="utf-8"
+  meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+  meta name="description" content="{MetaDescription}"
+  meta name="viewport" content="width=device-width"
+
+  link rel="alternate" type="application/rss+xml" href="{RSS}"
+  link rel="shortcut icon" href="{Favicon}"
+  -# For when using custom implementation:
+  -# link rel="apple-touch-icon" sizes="120x120" href="{image:Avatar}"
+  -# link rel="apple-touch-icon" sizes="152x152" href="{image:Avatar}"
+  link rel="apple-touch-icon" sizes="120x120" href="{PortraitURL-128}"
+  link rel="apple-touch-icon" sizes="152x152" href="{PortraitURL-128}"
+
+  -# Tumblr Options
+  == partial "layouts/TumblrOptions"
+
+  == block 'IfFacebookUsername' do
+    meta property="fb:admins" content="{text:Facebook Username}"
+
+  == block 'IfFacebookAPIID' do
+    meta property="fb:app_id" content="{text:Facebook API ID}"
+
+  -# Include Facebook OpenGraph tags
+  == partial "layouts/OpenGraph"
+
+  title {Title}
+
+  - if development
+    == stylesheet_link_tag "http://#{local_asset_host}:4567/styles/style.css"
+  - else
+    == stylesheet_link_tag style_url
+
+  == yield_content :after_stylesheet
+
+  script src="http://static.tumblr.com/hugxd2w/gPam0w5o1/modernizr-2.5.3.min.js"
+
+body class==(toClasses :PermalinkPage, :IndexPage, :IfClickToLoadPosts)
+
+  -# Includes theme body code from index.html.slim
+  == yield
+
+  == block 'Twitter' do
+    -# Pull in tweets
+    javascript:
+      function recent_tweets(data){window.tweet_data=data;}
+    == javascript_include_tag '/tweets.js'
+
+  -# All JS
+  - if development
+    == javascript_include_tag "http://#{local_asset_host}:4567/scripts/script.js"
+  - else
+    == javascript_include_tag script_url
+
+  == yield_content :post_script_code
+
+  -# Facebook SDK
+  == block 'IfFacebookComments' do
+    #fb-root
+    javascript:
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+         fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+  -# Disqus Comment Counts
+  == block 'IfNotFacebookComments' do
+    == block 'IfDisqusComments' do
+      == block 'IfDisqusShortname' do
+        javascript:
+          var disqus_shortname = '{text:Disqus Shortname}';
+          (function () {
+          var s = document.createElement('script'); s.async = true;
+          s.type = 'text/javascript';
+          s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+          }());
+
+  -# Google Analytics Stuff
+  == block 'IfGAPropertyID' do
+    javascript:
+      var _gaq=[['_setAccount','{text:GA Property ID}'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+
+  - if !marketing_url.empty?
+    == partial "layouts/MarketingWidget"
+
+| </html>

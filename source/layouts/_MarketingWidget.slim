@@ -1,0 +1,19 @@
+javascript:
+  var themeInfo = {
+    name: '#{theme}',
+    version: '#{version}',
+    demoURL: '#{demo_url}'
+  };
+
+  (function() {
+    var marketingScript = document.createElement('script');
+        marketingScript.type = 'text/javascript';
+        marketingScript.async = true;
+        marketingScript.src = '#{marketing_url}';
+
+    var isCustomize = (window.location.href.indexOf('/customize_preview_receiver.html') >= 0);
+    var isDemo = (window.location.href.indexOf(themeInfo.demoURL) >= 0);
+
+    (isCustomize || isDemo) && ((document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(marketingScript));
+  })();
+

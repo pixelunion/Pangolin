@@ -1,0 +1,89 @@
+.social-icons.clearfix
+
+  -# Non-social media icons
+  == block 'IfEmailAddress' do
+    a.email href="mailto:{text:Email Address}"
+      | {lang:Send email}
+
+  == block 'IfShowRSSLink' do
+    a.email href="{RSS}"
+      | {lang:RSS}
+
+  -# Twitter is enabled via Tumblr account settings
+  == block 'Twitter' do
+    a.twitter href="http://twitter.com/{TwitterUsername}" target="_blank" Twitter
+
+  -# Username-based settings
+  == block 'IfFacebookUsername' do
+    a.facebook href="http://www.facebook.com/{text:Facebook Username}" target="_blank" Facebook
+
+  == block 'IfSkypeUsername' do
+    a.skype href="skype:{text:Skype Username}?userinfo" Skype
+
+  -# URL-based settings
+  == block 'IfBehanceURL' do
+    a.behance href="{text:Behance URL}" target="_blank" Behance
+
+  == block 'IfDeliciousURL' do
+    a.delicious href="{text:Delicious URL}" target="_blank" Delicious
+
+  == block 'IfDeviantArtURL' do
+    a.deviantart href="{text:DeviantArt URL}" target="_blank" DeviantArt
+
+  == block 'IfDiggURL' do
+    a.digg href="{text:Digg URL}" target="_blank" Digg
+
+  == block 'IfDribbbleURL' do
+    a.dribbble href="{text:Dribbble URL}" target="_blank" Dribbble
+
+  == block 'IfFlickrURL' do
+    a.flickr href="{text:Flickr URL}" target="_blank" Flickr
+
+  == block 'IfFoursquareURL' do
+    a.foursquare href="{text:Foursquare URL}" target="_blank" Foursquare
+
+  == block 'IfGithubURL' do
+    a.github href="{text:Github URL}" target="_blank" Github
+
+  == block 'IfGooglePlusURL' do
+    a.google-plus href="{text:Google Plus URL}" target="_blank" Google+
+
+  == block 'IfInstagramURL' do
+    a.instagram href="{text:Instagram URL}" target="_blank" Instagram
+
+  == block 'IfLastfmURL' do
+    a.lastfm href="{text:Lastfm URL}" target="_blank" Lastfm
+
+  == block 'IfLinkedinURL' do
+    a.linkedin href="{text:Linkedin URL}" target="_blank" Linkedin
+
+  == block 'IfMySpaceURL' do
+    a.myspace href="{text:MySpace URL}" target="_blank" MySpace
+
+  == block 'IfPinboardURL' do
+    a.pinboard href="{text:Pinboard URL}" target="_blank" Pinboard
+
+  == block 'IfPinterestURL' do
+    a.pinterest href="{text:Pinterest URL}" target="_blank" Pinterest
+
+  == block 'IfRdioURL' do
+    a.rdio href="{text:Rdio URL}" target="_blank" Rdio
+
+  == block 'IfSoundCloudURL' do
+    a.soundcloud href="{text:Soundcloud URL}" target="_blank" Soundcloud
+
+  == block 'IfSpotifyURL' do
+    a.spotify href="{text:Spotify URL}" target="_blank" Spotify
+
+  == block 'IfStumbleuponURL' do
+    a.stumbleupon href="{text:Stumbleupon URL}" target="_blank" Stumbleupon
+
+  == block 'IfSvpplyURL' do
+    a.svpply href="{text:Svpply URL}" target="_blank" Svpply
+
+  == block 'IfVimeoURL' do
+    a.vimeo href="{text:Vimeo URL}" target="_blank" Vimeo
+
+  == block 'IfYoutubeURL' do
+    a.youtube href="{text:Youtube URL}" target="_blank" Youtube
+

@@ -1,0 +1,12 @@
+== block 'Title' do
+  h1
+    a href="{Permalink}"
+      | {Title}
+
+ul class="chat"
+  == block 'Lines' do
+    li class="{Alt} user_{UserNumber}"
+      == block 'Label' do
+        span class="label" {Label}
+
+      | {Line}

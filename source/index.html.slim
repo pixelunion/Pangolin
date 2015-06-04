@@ -1,0 +1,67 @@
+.page-wrap
+  header
+    h1 {Title}
+    .blog-description
+      | {Description}
+
+    == partial "layouts/Social"
+
+  .navigation
+    ul
+      == block 'HasPages' do
+        == block 'Pages' do
+          li
+            a href="{url}" {label}
+      == block 'IfShowRandomLink' do
+        li.random
+          a href="/random"
+            | {lang:Random}
+      == block 'IfShowArchiveLink' do
+        li.archive
+          a href="/archive"
+            | {lang:Archive}
+      == block 'IfShowRSSLink' do
+        li.feed
+          a href="/rss"
+            | {lang:RSS}
+      == block 'AskEnabled' do
+        li.ask
+          a href="/ask"
+            | {AskLabel}
+      == block 'SubmissionsEnabled' do
+        li.submit
+          a href="/submit"
+            | {SubmitLabel}
+
+    == block 'IfShowSearch' do
+      form.search-form action="/search" method="get"
+        input.header-search-field type="text" name="q" placeholder="{lang:Search}"
+
+  .posts
+    == block 'Posts' do
+      article id="{PostID}" class="post type-{PostType}{block:Photoset}set{/block:Photoset}"
+
+        - %w(Text Photo Photoset Quote Link Chat Audio Video Answer).each do |type|
+          == block type do
+            == partial "layouts/PostTypes/#{type}Post"
+
+        -# Post Metadata aside
+        == partial "layouts/PostMeta"
+
+        -# Permalink Only Stuff
+        == partial "layouts/PermalinkContent"
+
+  == block 'Pagination' do
+    .pagination
+      == block 'PreviousPage' do
+        a.previous href="{PreviousPage}"
+          | {lang:Newer}
+      == block 'NextPage' do
+        a.next href="{NextPage}"
+          | {lang:Older}
+
+  footer
+    p.copyright
+      a href="#{purchase_url}" #{theme}
+      | Theme by
+      a href="#{developer_url}" #{developer_name}

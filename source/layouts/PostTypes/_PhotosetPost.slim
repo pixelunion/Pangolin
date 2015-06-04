@@ -1,0 +1,14 @@
+div.photo-slideshow data-layout="{PhotosetLayout}" id="photoset_{PostID}"
+
+  == block 'Photos' do
+    .photo-data
+      .pxu-photo
+        | <img alt="{PhotoAlt}" src="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}>
+        .icons
+          a.tumblr-box rel="post-{PostID}" href="{PhotoURL-HighRes}"
+            span.zoom Zoom
+          span.info Info
+
+== block 'Caption' do
+  .caption.clearfix.rte
+    | {Caption}

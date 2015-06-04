@@ -1,0 +1,12 @@
+.audio-wrap
+  | {AudioEmbed-640}
+
+== block 'ExternalAudio' do
+  p.download
+    a href="{ExternalAudioURL}"
+      | {lang:Download}
+
+== block 'Caption' do
+  .caption.clearfix.rte
+    | {Caption}
+

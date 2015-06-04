@@ -1,0 +1,65 @@
+
+@import 'Mixins';
+
+/* General Post Styles (type-agnostic) */
+@import 'Post';
+
+/* Specific Post Type Styles */
+@import 'PostTypes/AnswerPost';
+@import 'PostTypes/AudioPost';
+@import 'PostTypes/ChatPost';
+@import 'PostTypes/LinkPost';
+@import 'PostTypes/PhotoPost';
+@import 'PostTypes/PhotosetPost';
+@import 'PostTypes/QuotePost';
+@import 'PostTypes/TextPost';
+@import 'PostTypes/VideoPost';
+
+* {
+  @include box-sizing(border-box);
+}
+
+.page-wrap {
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Helvetica Neue';
+}
+
+// Title Font
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Georgia;
+}
+
+/* .rte is for all block elements that contain the output of Tumblr's
+ * rich text editor (i.e. text captions, photo captions, etc.)
+ */
+.rte {
+
+  p {
+  }
+
+  ul {
+
+    li {
+    }
+  }
+
+  ol {
+
+    li {
+    }
+  }
+
+  blockquote {
+  }
+
+  img {
+  }
+}
+
+

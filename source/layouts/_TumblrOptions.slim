@@ -1,0 +1,61 @@
+
+-# Theme Options
+- options = TumblrOptions.new
+
+-# Use {PortraitURL-[16-128]} for Avatar implementations.
+-# If using an avatar larger than 128px, use the following:
+-# == options.add :image, 'Avatar'
+
+== options.add :color, 'Accent',                :default => '#ff00ff'
+
+== options.add :text,  'Facebook API ID'
+== options.add :text,  'Facebook Username'
+== options.add :text,  'Disqus Shortname'
+== options.add :text,  'GA Property ID'
+
+== options.add :if,    'Disqus Comments'
+== options.add :if,    'Facebook Comments'
+== options.add :if,    'Show Search',           :default => '1'
+== options.add :if,    'Show Random Link',      :default => '1'
+== options.add :if,    'Show Archive Link',     :default => '1'
+== options.add :if,    'Show RSS Link',         :default => '1'
+== options.add :if,    'Click To Load Posts',   :default => '1'
+
+-# == options.add_select :"Option Title", :"Value One", { :"Value One" => 'val-one', :"Value Two" => 'val-two', :"Value Three" => 'val-three' }
+
+-# Options will be available as Theme.options.option_name
+- content_for :post_script_code do
+  == options.to_tumblr_json
+
+-# Social Link Section
+- social = TumblrOptions.new
+
+== social.add :text,  'Behance URL'
+== social.add :text,  'Delicious URL'
+== social.add :text,  'DeviantArt URL'
+== social.add :text,  'Digg URL'
+== social.add :text,  'Dribbble URL'
+== social.add :text,  'Email Address'
+== social.add :text,  'Flickr URL'
+== social.add :text,  'Foursquare URL'
+== social.add :text,  'Github URL'
+== social.add :text,  'Google Plus URL'
+== social.add :text,  'Instagram URL'
+== social.add :text,  'Lastfm URL'
+== social.add :text,  'Linkedin URL'
+== social.add :text,  'MySpace URL'
+== social.add :text,  'Pinboard URL'
+== social.add :text,  'Pinterest URL'
+== social.add :text,  'Rdio URL'
+== social.add :text,  'Skype Username'
+== social.add :text,  'Soundcloud URL'
+== social.add :text,  'Spotify URL'
+== social.add :text,  'Stumbleupon URL'
+== social.add :text,  'Svpply URL'
+== social.add :text,  'Vimeo URL'
+== social.add :text,  'Youtube URL'
+
+- content_for :after_stylesheet do
+  css:
+    {CustomCSS}
+

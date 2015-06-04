@@ -1,0 +1,61 @@
+meta property="og:site_name" content="{Title}"
+
+== block 'PermalinkPage' do
+
+  meta property="og:url" content="{Permalink}"
+  meta property="og:type" content="article"
+
+  == block 'Posts' do
+
+    == block 'Text' do
+      meta property="og:description" content="{PlaintextBody}"
+      == block 'Title' do
+        meta property="og:title" content="{PlaintextTitle}"
+
+    == block 'Photo' do
+      meta property="og:image" content="{PhotoURL-500}"
+      == block 'Caption' do
+        meta property="og:description" content="{PlaintextCaption}"
+
+    == block 'Photoset' do
+      == block 'Photos' do
+        meta property="og:image" content="{PhotoURL-500}"
+        == block 'Caption' do
+          meta property="og:description" content="{PlaintextCaption}"
+
+    == block 'Quote' do
+      meta property="og:title" content="{PlaintextQuote}"
+      meta property="og:description" content="{PlaintextSource}"
+      meta property="og:image" content="{PortraitURL-64}"
+
+    == block 'Link' do
+      meta property="og:title" content="{PlaintextName}"
+      meta property="og:description" content="{PlaintextDescription}"
+      meta property="og:image" content="{PortraitURL-64}"
+
+    == block 'Chat' do
+      meta property="og:title" content="{PlaintextTitle}"
+      meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"
+      meta property="og:image" content="{PortraitURL-64}"
+
+    == block 'Audio' do
+      meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"
+      meta property="og:description" content="{PlaintextCaption}"
+      == block 'AlbumArt' do
+        meta property="og:image" content="{AlbumArtURL}"
+
+    == block 'Video' do
+      == block 'Caption' do
+        meta property="og:description" content="{PlaintextCaption}"
+
+    == block 'Answer' do
+      meta property="og:title" content="{PlaintextQuestion}"
+      meta property="og:description" content="{PlaintextAnswer}"
+      meta property="og:image" content="{PortraitURL-64}"
+
+== block 'IndexPage' do
+  meta property="og:title" content="{Title}"
+  meta property="og:type" content="blog"
+  meta property="og:description" content="{MetaDescription}"
+  meta property="og:image" content="{PortraitURL-64}"
+

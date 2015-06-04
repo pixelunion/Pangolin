@@ -1,0 +1,26 @@
+aside.metadata
+  a.timestamp href="{Permalink}"
+    | {TimeAgo}
+
+  == block 'NoteCount' do
+    a.notes href="{Permalink}#notes"
+      | {NoteCountWithLabel}
+
+  == block 'HasTags' do
+    .tags
+      == block 'Tags' do
+        a href="{TagURL}"
+          | {Tag}
+        '
+
+  == block 'IfFacebookComments' do
+    .comment-count
+      a href="{Permalink}#comments"
+        | <fb:comments-count href="{Permalink}"></fb:comments-count> Comments
+
+  == block 'IfNotFacebookComments' do
+    == block 'IfDisqusComments' do
+      == block 'IfDisqusShortname' do
+        .comment-count
+          a href="{Permalink}#disqus_thread"
+

@@ -1,0 +1,135 @@
+
+/* A flexible mixin designed for including sprites aligned to a 16px by 16px
+ * grid. Set $spritesheet to the regular spritesheet and $spritesheet_retina
+ * to a 2 times size spritesheet (layed out the same, so aligned to a 32px
+ * grid), and you're good to go. To include the sprite in the top left corner
+ * of the spritesheet, use:
+ *
+ *    @include sprite(0, 0);
+ */
+
+$spritesheet: 'http://localhost:4567/images/spritesheet.png';
+$spritesheet_retina: 'http://localhost:4567/images/spritesheet-retina.png';
+
+@mixin sprite($x, $y) {
+  background-image: $spritesheet;
+  background-position: $x*-16px $y*-16px;
+
+  @include image-2x($spritesheet_retina, 512px, 512px);
+}
+
+/* Include retina assets */
+@mixin image-2x($image, $width, $height) {
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+/* Target touch devices */
+@mixin touch {
+  .touch & {
+    @content;
+  }
+}
+
+/* Internet explorer support. */
+@mixin lt-ie9 {
+  .lt-ie9 & {
+    @content;
+  }
+}
+
+/* Breakpoints */
+@mixin breakpoint($size) {
+  @if $size == large {
+    @media (max-width: 970px) { @content; }
+  }
+  @if $size == medium {
+    @media (max-width: 730px) { @content; }
+  }
+  @else if $size == small {
+    @media (max-width: 620px) { @content; }
+  }
+  @else if $size == tiny {
+    @media (max-width: 480px) { @content; }
+  }
+}
+
+/* Calc function */
+@mixin calc($rule, $equation) {
+  #{$rule}: -webkit-calc(#{$equation});
+  #{$rule}: calc(#{$equation});
+}
+
+/* Placeholder */
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+/* Icon Font */
+@mixin iconfont($size) {
+  font-size: $size;
+  font-family: "Icons";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+/* Flexbox */
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Order Flexbox */
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+/* Animations */
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  animation: #{$str};
+}
