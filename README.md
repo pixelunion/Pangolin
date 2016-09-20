@@ -1,4 +1,5 @@
-# ![](https://dl.dropboxusercontent.com/s/0bv1kv66zxvztrs/Oval%201%20Copy%209.svg?dl=0) Pangolin
+![](https://cl.ly/2q3Q2Y0B0T0Y/pangolin-mark.svg)  
+# Pangolin
 
 **[Pixel Union](https://www.pixelunion.net)**'s very own Tumblr theme skeleton and build system, now open to everyone. Pangolin was built to help facilitate the rapid development of themes for the Tumblr platform. It provides a heavily opinionated suite of tools for every stage of the project.
 
