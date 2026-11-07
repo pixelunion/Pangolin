@@ -9,7 +9,7 @@ Pangolin also includes pre-built functionality for [Open Graph](http://ogp.me) m
 
 #### Ruby
 
-For overall asset watching, compiling, and serving. [Middleman](https://middlemanapp.com/) is used to serve styles and scripts, and a variety of Ruby helpers are used for templating and Tumblr settings.
+For overall asset watching, compiling, & serving. [Middleman](https://middlemanapp.com/) is used to serve styles and scripts, and a variety of Ruby helpers are used for templating and Tumblr settings.
 
 #### Slim
 
